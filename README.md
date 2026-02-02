@@ -1,111 +1,156 @@
-Filter Trace - Network Request Monitor for IT ProfessionalsFilter Trace is a powerful Chrome extension designed specifically for network administrators, IT professionals, and anyone managing content filters. Instantly see all background requests and resources loaded by any website, making it easy to troubleshoot filtering issues and understand what's happening behind the scenes.✨ Key Features📡 Real-Time Request Monitoring
+# Filter Trace - Chrome Extension
 
-Captures every network request as it happens
-Auto-refreshes every 2 seconds with new requests
-See exactly what resources a website is loading in the background
-🔍 Comprehensive Request Type Filtering
+A Chrome extension designed for network administrators and IT professionals to monitor all background requests and resources loaded by websites. Perfect for troubleshooting content filters, analyzing web traffic, and understanding what resources websites are accessing.
 
-Documents - HTML pages and iframes
-Scripts - JavaScript files
-Stylesheets - CSS files
-Images - PNG, JPG, GIF, SVG, and more
-XHR - XMLHttpRequest (AJAX) calls
-Fetch - Modern Fetch API requests
-Fonts - Web fonts (WOFF, TTF, etc.)
-Media - Audio and video files
-WebSockets - Real-time connection requests
-Other - All other resource types
-🎨 Color-Coded Interface
-Each request type has a distinct color for instant visual identification, making it easy to spot specific resource types at a glance.🔎 Powerful URL Search
-Quickly find specific requests by searching URLs. Perfect for identifying whether specific domains or resources are being loaded.💾 CSV Export for Analysis
-Export all captured requests to CSV format with the following columns:
+## Features
 
-Timestamp - When the request occurred
-Type - Resource type
-Method - HTTP method (GET, POST, etc.)
-URL - Full request URL
-Open exported files directly in Excel, Google Sheets, or any spreadsheet software for advanced filtering, sorting, and reporting.📊 Live Statistics
+- 📡 **Real-time Request Monitoring** - Captures all network requests as they happen
+- 🔍 **Request Type Filtering** - Filter by:
+  - Documents (HTML pages)
+  - Scripts (JavaScript)
+  - Stylesheets (CSS)
+  - Images
+  - XHR (AJAX requests)
+  - Fetch API requests
+  - Fonts
+  - Media (audio/video)
+  - WebSockets
+- 🔎 **URL Search** - Quickly find specific requests by searching URLs
+- 💾 **Export Functionality** - Export all requests to a CSV file for analysis in Excel or Google Sheets
+- 📊 **Request Statistics** - See total and filtered request counts
+- 🌙 **Dark Mode** - Eye-friendly dark theme
+- 🔄 **Auto-refresh** - Updates every 2 seconds to show new requests
+- 🎨 **Color-coded Types** - Each request type has a distinct color for easy identification
 
-Total requests captured
-Filtered request count based on current filters
-Clear visibility into page resource usage
-🌙 Dark Mode
-Easy on the eyes with a beautiful dark theme. Toggle between light and dark mode with your preference automatically saved.🎯 Perfect For:K-12 School Network Administrators
-Troubleshoot why educational websites aren't loading correctly through content filters. See exactly which resources are being requested and identify blocked domains.IT Professionals
-Diagnose web application issues, verify proxy configurations, and understand third-party dependencies.Content Filter Management
-Quickly identify which domains and resources need to be whitelisted or blocked in your filtering solution.Security Professionals
-Audit websites for third-party trackers, advertising networks, and external service dependencies.Web Developers
-Analyze resource loading patterns, identify performance bottlenecks, and verify API calls.🚀 How to Use:
-Navigate to any website in Chrome
-Click the Filter Trace icon in your toolbar
-View all network requests in real-time
-Use filters to focus on specific request types
-Search URLs to find particular domains or resources
-Export to CSV for detailed analysis
-Clear requests to start fresh monitoring
-💡 Common Use Cases:Troubleshooting Content Filters
-When a website doesn't work through your filter:
+## Perfect For
 
-Load the page with Filter Trace active
-Review all captured requests
-Identify which domains are being called
-Check your filter logs to see what's being blocked
-Whitelist necessary resources
-Export data for documentation
-Third-Party Resource Analysis
-Understand what external services a website uses:
+- K-12 School Network Administrators managing content filters
+- IT Professionals troubleshooting web access issues
+- Web Developers analyzing third-party resources
+- Security Professionals auditing website connections
+- Anyone needing to see what a website is loading in the background
 
-Load the site
-Filter by "Scripts" to see JavaScript sources
-Filter by "XHR" and "Fetch" to see API calls
-Export to CSV and analyze in your spreadsheet tool
-Document findings for security review
-Performance Investigation
-Identify resource-heavy websites:
+## Installation
 
-View total request count
-Filter by "Images" to see image loading
-Check for excessive script requests
-Export data to create performance reports
-Debugging Web Applications
-When troubleshooting web app issues:
+### Method 1: Load as Unpacked Extension
 
-Monitor XHR and Fetch requests
-Verify API endpoints are being called correctly
-Check for failed or missing resources
-Export for sharing with development teams
-🔒 Privacy & SecurityFilter Trace respects your privacy:
+1. Download or clone all the extension files to a folder
+2. Open Chrome and go to `chrome://extensions/`
+3. Enable "Developer mode" (toggle in top right)
+4. Click "Load unpacked"
+5. Select the extension folder
+6. The Background Request Monitor icon will appear in your toolbar
 
-No data collection - We don't collect or store any of your browsing data
-No external servers - All processing happens locally in your browser
-No tracking - Zero analytics or user tracking
-Temporary storage - Request data is cleared when tabs close
-Local only - Data never leaves your computer
-⚡ Technical Highlights:
-Uses Chrome's WebRequest API for accurate request capture
-Manifest Version 3 compliant (latest security standard)
-Service worker architecture for efficiency
-Automatic memory management (stores up to 1000 requests per tab)
-Auto-clears data when tabs are closed or navigated
-Minimal performance impact on browsing
-📋 Request Information Captured:For each request, Filter Trace shows:
+### Method 2: Pack and Install
 
-Full URL of the resource
-Request type (Document, Script, Image, etc.)
-HTTP method (GET, POST, PUT, DELETE, etc.)
-Precise timestamp of when the request occurred
-🆕 What's New in Version 1.0:
-Real-time request monitoring with auto-refresh
-Comprehensive filtering by request type
-URL search functionality
-CSV export for spreadsheet analysis
-Dark mode support
-Color-coded request types
-Live statistics and counters
-Optimized performance and memory usage
-⚙️ Permissions Explained:
-webRequest - Required to monitor network requests
-activeTab - To identify which tab you're monitoring
-storage - To save your dark mode preference
-<all_urls> - To monitor requests from any website you visit
-💬 Support & Feedback:We value your feedback! If you encounter issues or have suggestions for improvement, please use the support section to let us know.🎓 Perfect for Educational Institutions:Filter Trace was designed with K-12 schools in mind. Managing content filters for educational institutions requires quick troubleshooting and clear documentation. Filter Trace provides both - instant visibility into what's being blocked and exportable reports for your records
+1. Follow steps 1-3 from Method 1
+2. Click "Pack extension"
+3. Select the extension folder
+4. Chrome will create a `.crx` file
+5. Drag the `.crx` file into Chrome to install
+
+## Usage
+
+1. Navigate to any website
+2. Click the Filter Trace icon
+3. The extension will display all requests made by that page
+4. Use filters to narrow down specific types of requests
+5. Use the search box to find specific URLs
+6. Click 💾 to export all requests to a CSV file
+7. Click 🗑️ to clear captured requests for the current tab
+
+## Use Cases
+
+### Content Filter Troubleshooting
+When a website isn't loading correctly through your content filter:
+1. Load the page with the extension active
+2. Review all background requests
+3. Identify which domains/resources are being blocked
+4. Adjust filter rules accordingly
+
+### Third-Party Resource Analysis
+See what external services and trackers a website uses:
+1. Filter by "Scripts" to see JavaScript files
+2. Filter by "XHR" and "Fetch" to see API calls
+3. Export to CSV for analysis in spreadsheet software
+
+### Performance Analysis
+Identify resource-heavy pages:
+1. Count total requests
+2. Check for excessive image/script loading
+3. Identify slow or problematic resources
+
+## Request Types Explained
+
+- **Document** - HTML pages and frames
+- **Script** - JavaScript files
+- **Stylesheet** - CSS files
+- **Image** - PNG, JPG, GIF, SVG, etc.
+- **XHR** - XMLHttpRequest (AJAX) calls
+- **Fetch** - Modern Fetch API requests
+- **Font** - Web fonts (WOFF, TTF, etc.)
+- **Media** - Audio and video files
+- **WebSocket** - WebSocket connections
+- **Other** - Everything else
+
+## Files Included
+
+- `manifest.json` - Extension configuration
+- `background.js` - Service worker that captures requests
+- `popup.html` - User interface
+- `popup.js` - UI logic and filtering
+- `icon16.png`, `icon48.png`, `icon128.png` - Extension icons
+- `README.md` - This file
+
+## Privacy
+
+This extension:
+- Only monitors requests for the active tab when you open the extension
+- Does not send any data to external servers
+- Stores request data temporarily in memory only
+- Clears data when tabs are closed or navigated
+- Does not track your browsing history
+
+## Technical Details
+
+- Uses Chrome's WebRequest API to monitor network traffic
+- Manifest Version 3 compliant
+- Service worker architecture for efficiency
+- Stores up to 1000 requests per tab to prevent memory issues
+- Auto-clears data when tabs close or navigate
+
+## Permissions Required
+
+- `webRequest` - To monitor network requests
+- `activeTab` - To identify the current tab
+- `storage` - To save dark mode preference
+- `<all_urls>` - To monitor requests from any domain
+
+## Troubleshooting
+
+**Extension not showing requests:**
+- Reload the page after opening the extension
+- Check that you have the correct tab active
+- Some Chrome internal pages cannot be monitored
+
+**Too many requests:**
+- Use filters to narrow down what you're looking for
+- Use the search box to find specific URLs
+- Clear requests periodically
+
+**Export not working:**
+- Make sure you have requests captured first
+- Check your browser's download settings
+
+## Tips for Content Filter Management
+
+1. **Identify Blocked Resources** - Look for requests that might be failing
+2. **Document Third-Party Dependencies** - Export to CSV and analyze in Excel/Sheets
+3. **Compare Working vs. Broken Pages** - Use export to compare request patterns
+4. **Monitor Real-time** - Keep the extension open while troubleshooting
+5. **Filter by Type** - Focus on specific resource types causing issues
+6. **Use CSV for Reporting** - Import exported data into your reporting tools
+
+## License
+
+Free to use and modify for educational and professional purposes.
