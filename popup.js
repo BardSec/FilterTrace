@@ -47,7 +47,9 @@ function updateDisplay() {
   let filtered = allRequests;
   
   // Apply type filter
-  if (currentFilter !== 'all') {
+  if (currentFilter === 'errors') {
+    filtered = filtered.filter(req => req.hasError);
+  } else if (currentFilter !== 'all') {
     filtered = filtered.filter(req => req.type.toLowerCase() === currentFilter);
   }
   
@@ -61,6 +63,7 @@ function updateDisplay() {
   // Update stats
   document.getElementById('totalCount').textContent = allRequests.length;
   document.getElementById('filteredCount').textContent = filtered.length;
+  document.getElementById('errorCount').textContent = allRequests.filter(req => req.hasError).length;
   
   // Display requests
   if (filtered.length === 0) {
@@ -83,22 +86,38 @@ function updateDisplay() {
 // Create request item element
 function createRequestItem(request) {
   const div = document.createElement('div');
-  div.className = 'request-item';
-  
+  div.className = 'request-item' + (request.hasError ? ' has-error' : '');
+
   const type = request.type.toLowerCase();
   const typeClass = `type-${type}`;
-  
+
   const timestamp = new Date(request.timestamp).toLocaleTimeString();
-  
+
+  const errorBadge = request.hasError
+    ? `<span class="error-badge">${escapeHtml(request.error)}</span>`
+    : '';
+
+  const statusInfo = request.statusCode && !request.hasError
+    ? ` • ${request.statusCode}`
+    : '';
+
   div.innerHTML = `
     <div>
       <span class="request-type ${typeClass}">${request.type}</span>
-      <span class="request-meta">${request.method} • ${timestamp}</span>
+      <span class="request-meta">${request.method}${statusInfo} • ${timestamp}</span>
+      ${errorBadge}
     </div>
-    <div class="request-url">${request.url}</div>
+    <div class="request-url">${escapeHtml(request.url)}</div>
   `;
-  
+
   return div;
+}
+
+// Escape HTML to prevent XSS from URL content
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
 }
 
 // Filter button handlers
@@ -141,15 +160,17 @@ document.getElementById('exportBtn').addEventListener('click', () => {
     const url = new URL(tabs[0].url);
     
     // Create CSV content
-    let csvContent = 'Timestamp,Type,Method,URL\n';
-    
+    let csvContent = 'Timestamp,Type,Method,Status,Error,URL\n';
+
     allRequests.forEach(req => {
       const timestamp = new Date(req.timestamp).toLocaleString();
       const type = req.type;
       const method = req.method;
+      const status = req.statusCode || '';
+      const error = (req.error || '').replace(/"/g, '""');
       const requestUrl = req.url.replace(/"/g, '""'); // Escape quotes in URL
-      
-      csvContent += `"${timestamp}","${type}","${method}","${requestUrl}"\n`;
+
+      csvContent += `"${timestamp}","${type}","${method}","${status}","${error}","${requestUrl}"\n`;
     });
     
     // Download file
